@@ -1,0 +1,423 @@
+
+100percentJesus.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000002  00800100  0000021c  000002b0  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000021c  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000001  00800102  00800102  000002b2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002b2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002e4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000058  00000000  00000000  00000324  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   000007b2  00000000  00000000  0000037c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000006a0  00000000  00000000  00000b2e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000439  00000000  00000000  000011ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000a4  00000000  00000000  00001608  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000003e3  00000000  00000000  000016ac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000062  00000000  00000000  00001a8f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000048  00000000  00000000  00001af1  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 81 00 	jmp	0x102	; 0x102 <__vector_3>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ec e1       	ldi	r30, 0x1C	; 28
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a2 30       	cpi	r26, 0x02	; 2
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a2 e0       	ldi	r26, 0x02	; 2
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a3 30       	cpi	r26, 0x03	; 3
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 fa 00 	call	0x1f4	; 0x1f4 <main>
+  9e:	0c 94 0c 01 	jmp	0x218	; 0x218 <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <setup_pin>:
+
+char flag_partida = 0x00, motor_state = 0x02, sensor_state = 0x00;
+
+void setup_pin(){
+	// Configura o RX e TX
+	DDRD = 0b11111110;
+  a6:	8e ef       	ldi	r24, 0xFE	; 254
+  a8:	8a b9       	out	0x0a, r24	; 10
+	PORTD = 0x00;
+  aa:	1b b8       	out	0x0b, r1	; 11
+	
+	// Configura a entrada dos sensores digitais
+	DDRB = 0x00;
+  ac:	14 b8       	out	0x04, r1	; 4
+	PORTB = 0b00110011;
+  ae:	83 e3       	ldi	r24, 0x33	; 51
+  b0:	85 b9       	out	0x05, r24	; 5
+	
+	//Enable Pin Change INT[1]
+	PCICR = 0b00000001;
+  b2:	91 e0       	ldi	r25, 0x01	; 1
+  b4:	90 93 68 00 	sts	0x0068, r25	; 0x800068 <__TEXT_REGION_LENGTH__+0x7e0068>
+	
+	/*Pin Change Interrupt MASK*/
+	/*bits 23 to 16*/
+	PCMSK2 = 0x00;
+  b8:	10 92 6d 00 	sts	0x006D, r1	; 0x80006d <__TEXT_REGION_LENGTH__+0x7e006d>
+	/*bits 14 to 08*//*Doesnt exist PCINT15*/
+	PCMSK1 = 0x00;
+  bc:	10 92 6c 00 	sts	0x006C, r1	; 0x80006c <__TEXT_REGION_LENGTH__+0x7e006c>
+	/*bits 07 to 00*/
+	PCMSK0 = 0b00110011;
+  c0:	80 93 6b 00 	sts	0x006B, r24	; 0x80006b <__TEXT_REGION_LENGTH__+0x7e006b>
+  c4:	08 95       	ret
+
+000000c6 <setup_usart>:
+	
+}
+
+void setup_usart(unsigned int ubrr){
+	/*Set baud rate */
+	UBRR0H = (unsigned char)(ubrr>>8);
+  c6:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7e00c5>
+	UBRR0L = (unsigned char)ubrr;
+  ca:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7e00c4>
+	/* Enable receiver and transmitter */
+	UCSR0B = (1<<RXEN0)|(1<<TXEN0);
+  ce:	88 e1       	ldi	r24, 0x18	; 24
+  d0:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7e00c1>
+	/* Set frame format: 8data, 2stop bit */
+	UCSR0C = (1<<USBS0)|(3<<UCSZ00);
+  d4:	8e e0       	ldi	r24, 0x0E	; 14
+  d6:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7e00c2>
+  da:	08 95       	ret
+
+000000dc <setup_pwm_timer>:
+}
+
+void setup_pwm_timer(){
+	
+	//  TIMER 0 Config, PWM fast
+	TCCR0A = 0b11110011;
+  dc:	83 ef       	ldi	r24, 0xF3	; 243
+  de:	84 bd       	out	0x24, r24	; 36
+	TCCR0B = 0x04;
+  e0:	84 e0       	ldi	r24, 0x04	; 4
+  e2:	85 bd       	out	0x25, r24	; 37
+	TIMSK0 = 0x00;
+  e4:	10 92 6e 00 	sts	0x006E, r1	; 0x80006e <__TEXT_REGION_LENGTH__+0x7e006e>
+	OCR0A = 0xFF;
+  e8:	8f ef       	ldi	r24, 0xFF	; 255
+  ea:	87 bd       	out	0x27, r24	; 39
+	OCR0B = 0xFF;
+  ec:	88 bd       	out	0x28, r24	; 40
+	TCNT0 = 0x00;
+  ee:	16 bc       	out	0x26, r1	; 38
+  f0:	08 95       	ret
+
+000000f2 <USART_Receive>:
+	
+}
+
+unsigned char USART_Receive( void ){
+	/* Wait for data to be received */
+	while ( !(UCSR0A & (1<<RXC0)) );
+  f2:	e0 ec       	ldi	r30, 0xC0	; 192
+  f4:	f0 e0       	ldi	r31, 0x00	; 0
+  f6:	80 81       	ld	r24, Z
+  f8:	88 23       	and	r24, r24
+  fa:	ec f7       	brge	.-6      	; 0xf6 <USART_Receive+0x4>
+	/* Get and return received data from buffer */
+	return UDR0;
+  fc:	80 91 c6 00 	lds	r24, 0x00C6	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7e00c6>
+}
+ 100:	08 95       	ret
+
+00000102 <__vector_3>:
+
+ISR (PCINT0_vect){
+ 102:	1f 92       	push	r1
+ 104:	0f 92       	push	r0
+ 106:	0f b6       	in	r0, 0x3f	; 63
+ 108:	0f 92       	push	r0
+ 10a:	11 24       	eor	r1, r1
+ 10c:	8f 93       	push	r24
+	
+	if((~PINB) & 1){
+ 10e:	18 99       	sbic	0x03, 0	; 3
+ 110:	04 c0       	rjmp	.+8      	; 0x11a <__vector_3+0x18>
+		motor_state = cod_PARE;
+ 112:	81 e0       	ldi	r24, 0x01	; 1
+ 114:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+ 118:	09 c0       	rjmp	.+18     	; 0x12c <__vector_3+0x2a>
+	}else if((~PINB) & 2){
+ 11a:	19 99       	sbic	0x03, 1	; 3
+ 11c:	04 c0       	rjmp	.+8      	; 0x126 <__vector_3+0x24>
+		motor_state = cod_PARE;
+ 11e:	81 e0       	ldi	r24, 0x01	; 1
+ 120:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+ 124:	03 c0       	rjmp	.+6      	; 0x12c <__vector_3+0x2a>
+	}else{
+		motor_state = cod_NORMAL;
+ 126:	82 e0       	ldi	r24, 0x02	; 2
+ 128:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+	}
+	
+	if(((~PINB) & (1 << PINB4)) && ((~PINB) & (1 << PINB5))){
+ 12c:	1c 99       	sbic	0x03, 4	; 3
+ 12e:	06 c0       	rjmp	.+12     	; 0x13c <__vector_3+0x3a>
+ 130:	1d 99       	sbic	0x03, 5	; 3
+ 132:	04 c0       	rjmp	.+8      	; 0x13c <__vector_3+0x3a>
+		motor_state = cod_RE;
+ 134:	83 e0       	ldi	r24, 0x03	; 3
+ 136:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+ 13a:	0e c0       	rjmp	.+28     	; 0x158 <__vector_3+0x56>
+	}else if((~PINB) & (1 << PINB4)){
+ 13c:	1c 99       	sbic	0x03, 4	; 3
+ 13e:	04 c0       	rjmp	.+8      	; 0x148 <__vector_3+0x46>
+		sensor_state = 0x02;
+ 140:	82 e0       	ldi	r24, 0x02	; 2
+ 142:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__data_end>
+ 146:	08 c0       	rjmp	.+16     	; 0x158 <__vector_3+0x56>
+	}else if((~PINB) & (1 << PINB5)){
+ 148:	1d 99       	sbic	0x03, 5	; 3
+ 14a:	04 c0       	rjmp	.+8      	; 0x154 <__vector_3+0x52>
+		sensor_state = 0x01;
+ 14c:	81 e0       	ldi	r24, 0x01	; 1
+ 14e:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__data_end>
+ 152:	02 c0       	rjmp	.+4      	; 0x158 <__vector_3+0x56>
+	}else{
+		sensor_state = 0x00;
+ 154:	10 92 02 01 	sts	0x0102, r1	; 0x800102 <__data_end>
+	}
+	
+}
+ 158:	8f 91       	pop	r24
+ 15a:	0f 90       	pop	r0
+ 15c:	0f be       	out	0x3f, r0	; 63
+ 15e:	0f 90       	pop	r0
+ 160:	1f 90       	pop	r1
+ 162:	18 95       	reti
+
+00000164 <configuration_motor>:
+
+void configuration_motor(){
+	PORTD &= ~(1 << 2);
+ 164:	5a 98       	cbi	0x0b, 2	; 11
+	PORTD &= ~(1 << 3);
+ 166:	5b 98       	cbi	0x0b, 3	; 11
+	OCR0A = VEL_NORMAL;
+ 168:	8a e7       	ldi	r24, 0x7A	; 122
+ 16a:	87 bd       	out	0x27, r24	; 39
+	OCR0B = VEL_NORMAL;
+ 16c:	88 bd       	out	0x28, r24	; 40
+ 16e:	08 95       	ret
+
+00000170 <machine_leitura>:
+}
+
+void machine_leitura(){
+	if(motor_state == cod_NORMAL){
+ 170:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+ 174:	82 30       	cpi	r24, 0x02	; 2
+ 176:	b1 f4       	brne	.+44     	; 0x1a4 <machine_leitura+0x34>
+		switch(sensor_state){
+ 178:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <__data_end>
+ 17c:	81 30       	cpi	r24, 0x01	; 1
+ 17e:	41 f0       	breq	.+16     	; 0x190 <machine_leitura+0x20>
+ 180:	18 f0       	brcs	.+6      	; 0x188 <machine_leitura+0x18>
+ 182:	82 30       	cpi	r24, 0x02	; 2
+ 184:	51 f0       	breq	.+20     	; 0x19a <machine_leitura+0x2a>
+ 186:	08 95       	ret
+			case 0x00: // Go straight
+				OCR0A = VEL_NORMAL;
+ 188:	8a e7       	ldi	r24, 0x7A	; 122
+ 18a:	87 bd       	out	0x27, r24	; 39
+				OCR0B = VEL_NORMAL;
+ 18c:	88 bd       	out	0x28, r24	; 40
+			break;
+ 18e:	08 95       	ret
+			case 0x01: // Curve to the left
+				OCR0A = VEL_CURVA;
+ 190:	8f ef       	ldi	r24, 0xFF	; 255
+ 192:	87 bd       	out	0x27, r24	; 39
+				OCR0B = VEL_NORMAL;
+ 194:	8a e7       	ldi	r24, 0x7A	; 122
+ 196:	88 bd       	out	0x28, r24	; 40
+			break;
+ 198:	08 95       	ret
+			case 0x02: // Curve to the right
+				OCR0A = VEL_NORMAL;
+ 19a:	8a e7       	ldi	r24, 0x7A	; 122
+ 19c:	87 bd       	out	0x27, r24	; 39
+				OCR0B = VEL_CURVA;
+ 19e:	8f ef       	ldi	r24, 0xFF	; 255
+ 1a0:	88 bd       	out	0x28, r24	; 40
+			break;
+ 1a2:	08 95       	ret
+			default:
+			break;
+		}
+	} else if(motor_state == cod_RE){
+ 1a4:	83 30       	cpi	r24, 0x03	; 3
+ 1a6:	f1 f4       	brne	.+60     	; 0x1e4 <machine_leitura+0x74>
+		switch(sensor_state){
+ 1a8:	80 91 02 01 	lds	r24, 0x0102	; 0x800102 <__data_end>
+ 1ac:	81 30       	cpi	r24, 0x01	; 1
+ 1ae:	19 f0       	breq	.+6      	; 0x1b6 <machine_leitura+0x46>
+ 1b0:	82 30       	cpi	r24, 0x02	; 2
+ 1b2:	41 f0       	breq	.+16     	; 0x1c4 <machine_leitura+0x54>
+ 1b4:	0d c0       	rjmp	.+26     	; 0x1d0 <machine_leitura+0x60>
+			case 0x01: // Curve to the left
+				PORTD |= (1 << 2);
+ 1b6:	5a 9a       	sbi	0x0b, 2	; 11
+				PORTD &= ~(1 << 3);
+ 1b8:	5b 98       	cbi	0x0b, 3	; 11
+				OCR0A = VEL_CURVA;
+ 1ba:	8f ef       	ldi	r24, 0xFF	; 255
+ 1bc:	87 bd       	out	0x27, r24	; 39
+				OCR0B = VEL_NORMAL;
+ 1be:	8a e7       	ldi	r24, 0x7A	; 122
+ 1c0:	88 bd       	out	0x28, r24	; 40
+			break;
+ 1c2:	06 c0       	rjmp	.+12     	; 0x1d0 <machine_leitura+0x60>
+			case 0x02: // Curve to the right
+				PORTD &= ~(1 << 2);
+ 1c4:	5a 98       	cbi	0x0b, 2	; 11
+				PORTD |= (1 << 3);
+ 1c6:	5b 9a       	sbi	0x0b, 3	; 11
+				OCR0A = VEL_NORMAL;
+ 1c8:	8a e7       	ldi	r24, 0x7A	; 122
+ 1ca:	87 bd       	out	0x27, r24	; 39
+				OCR0B = VEL_CURVA;
+ 1cc:	8f ef       	ldi	r24, 0xFF	; 255
+ 1ce:	88 bd       	out	0x28, r24	; 40
+			break;
+			default:
+			break;
+		}
+		while((((~PINB) & (1 << PINB4)) && ((~PINB) & (1 << PINB5))));
+ 1d0:	1c 99       	sbic	0x03, 4	; 3
+ 1d2:	02 c0       	rjmp	.+4      	; 0x1d8 <machine_leitura+0x68>
+ 1d4:	1d 9b       	sbis	0x03, 5	; 3
+ 1d6:	fc cf       	rjmp	.-8      	; 0x1d0 <machine_leitura+0x60>
+			motor_state = cod_NORMAL;
+ 1d8:	82 e0       	ldi	r24, 0x02	; 2
+ 1da:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+			PORTD &= ~(1 << 2);
+ 1de:	5a 98       	cbi	0x0b, 2	; 11
+			PORTD &= ~(1 << 3);
+ 1e0:	5b 98       	cbi	0x0b, 3	; 11
+ 1e2:	08 95       	ret
+	}else{
+		OCR0A = PARE;
+ 1e4:	17 bc       	out	0x27, r1	; 39
+		OCR0B = PARE;
+ 1e6:	18 bc       	out	0x28, r1	; 40
+		while(((~PINB) & 1));
+ 1e8:	18 9b       	sbis	0x03, 0	; 3
+ 1ea:	fe cf       	rjmp	.-4      	; 0x1e8 <machine_leitura+0x78>
+		motor_state = cod_NORMAL;
+ 1ec:	82 e0       	ldi	r24, 0x02	; 2
+ 1ee:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+ 1f2:	08 95       	ret
+
+000001f4 <main>:
+	}
+}
+
+int main(void){
+	
+	setup_pin();
+ 1f4:	0e 94 53 00 	call	0xa6	; 0xa6 <setup_pin>
+	setup_usart(USART_BAUDRATE);
+ 1f8:	87 e6       	ldi	r24, 0x67	; 103
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	0e 94 63 00 	call	0xc6	; 0xc6 <setup_usart>
+	
+	while(USART_Receive() != '1');
+ 200:	0e 94 79 00 	call	0xf2	; 0xf2 <USART_Receive>
+ 204:	81 33       	cpi	r24, 0x31	; 49
+ 206:	e1 f7       	brne	.-8      	; 0x200 <main+0xc>
+	
+	setup_pwm_timer();
+ 208:	0e 94 6e 00 	call	0xdc	; 0xdc <setup_pwm_timer>
+	configuration_motor();
+ 20c:	0e 94 b2 00 	call	0x164	; 0x164 <configuration_motor>
+	sei();
+ 210:	78 94       	sei
+
+	while (1){
+		machine_leitura();
+ 212:	0e 94 b8 00 	call	0x170	; 0x170 <machine_leitura>
+ 216:	fd cf       	rjmp	.-6      	; 0x212 <main+0x1e>
+
+00000218 <_exit>:
+ 218:	f8 94       	cli
+
+0000021a <__stop_program>:
+ 21a:	ff cf       	rjmp	.-2      	; 0x21a <__stop_program>
